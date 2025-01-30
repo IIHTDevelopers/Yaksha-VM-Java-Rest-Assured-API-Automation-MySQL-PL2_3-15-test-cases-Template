@@ -3,10 +3,7 @@ package rest;
 import java.util.List;
 import java.util.Map;
 
-import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
 public class ApiUtil {
 
@@ -27,21 +24,12 @@ public class ApiUtil {
 	 * @return CustomResponse - The API response containing all the departments.
 	 */
 	public CustomResponse getAllDepartments(String endpoint, Object body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + endpoint).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		List<Map<String, Object>> results = response.jsonPath().getList("Results");
+		int statusCode = 0;
+		String status = null;
+		List<Map<String, Object>> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -61,21 +49,12 @@ public class ApiUtil {
 	 * @return CustomResponse - The API response containing all the items.
 	 */
 	public CustomResponse getAllItems(String endpoint, Object body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + endpoint).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		List<Map<String, Object>> results = response.jsonPath().getList("Results");
+		int statusCode = 0;
+		String status = null;
+		List<Map<String, Object>> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -97,24 +76,12 @@ public class ApiUtil {
 	 *         report.
 	 */
 	public CustomResponse getIncentiveSummaryReport(String URL, Object body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(URL).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		String jsonDataString = response.jsonPath().getString("Results.JsonData");
-
-		// Deserialize JsonData into a List of Maps
-		List<Map<String, Object>> results = JsonPath.from(jsonDataString).getList("$");
+		int statusCode = 0;
+		String status = null;
+		List<Map<String, Object>> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -138,24 +105,12 @@ public class ApiUtil {
 	 *         summary report.
 	 */
 	public CustomResponse getIncReffSummReport(String URL, Object body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(URL).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		String jsonDataString = response.jsonPath().getString("Results.JsonData");
-
-		// Deserialize JsonData into a List of Maps
-		List<Map<String, Object>> results = JsonPath.from(jsonDataString).getList("$");
+		int statusCode = 0;
+		String status = null;
+		List<Map<String, Object>> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -177,21 +132,12 @@ public class ApiUtil {
 	 *         incentive report.
 	 */
 	public CustomResponse getHospIncIncReport(String URL, Object body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(URL).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		List<Map<String, Object>> results = response.jsonPath().getList("Results");
+		int statusCode = 0;
+		String status = null;
+		List<Map<String, Object>> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -211,21 +157,12 @@ public class ApiUtil {
 	 *         related data.
 	 */
 	public CustomResponse getEmpBillItem(String URL, Object body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + URL).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		Map<String, Object> results = response.jsonPath().getMap("Results");
+		int statusCode = 0;
+		String status = null;
+		Map<String, Object> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -243,21 +180,12 @@ public class ApiUtil {
 	 *         their details.
 	 */
 	public CustomResponse getInvntryFiscalYrs(String URL, Object body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + URL).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		List<Map<String, Object>> results = response.jsonPath().getList("Results");
+		int statusCode = 0;
+		String status = null;
+		List<Map<String, Object>> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -275,21 +203,12 @@ public class ApiUtil {
 	 *         list of stores.
 	 */
 	public CustomResponse getActInventory(String URL, Object body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + URL).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		List<Map<String, Object>> results = response.jsonPath().getList("Results");
+		int statusCode = 0;
+		String status = null;
+		List<Map<String, Object>> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -307,21 +226,12 @@ public class ApiUtil {
 	 *         list of subcategories.
 	 */
 	public CustomResponse getInvSubCat(String URL, Object body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + URL).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		List<Map<String, Object>> results = response.jsonPath().getList("Results");
+		int statusCode = 0;
+		String status = null;
+		List<Map<String, Object>> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -339,21 +249,12 @@ public class ApiUtil {
 	 *         details, and available quantity information.
 	 */
 	public CustomResponse getAvlQtyByStoreId(String URL, Object body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + URL).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		Map<String, Object> results = response.jsonPath().getMap("Results");
+		int statusCode = 0;
+		String status = null;
+		Map<String, Object> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -375,21 +276,12 @@ public class ApiUtil {
 	 * @return CustomResponse - The API response with the list of referrers.
 	 */
 	public CustomResponse getReferrersFromEmployeeSettings(String endpoint, Map<String, String> body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + endpoint).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		List<Map<String, Object>> results = response.jsonPath().getList("Results");
+		int statusCode = 0;
+		String status = null;
+		List<Map<String, Object>> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -413,21 +305,12 @@ public class ApiUtil {
 	 *         items.
 	 */
 	public CustomResponse getLabBillCfgItemsByDepartmentName(String endpoint, Map<String, String> body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + endpoint).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		List<Map<String, Object>> results = response.jsonPath().getList("Results");
+		int statusCode = 0;
+		String status = null;
+		List<Map<String, Object>> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -451,21 +334,12 @@ public class ApiUtil {
 	 */
 	public CustomResponse getPatientCurrentVisitContextByPatientIdAndVisitId(String endpoint,
 			Map<String, String> body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
+		Response response = null;
 
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + endpoint).then().extract().response();
-		System.out.println(BASE_URL + endpoint);
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		Map<String, Object> results = response.jsonPath().getMap("Results");
+		int statusCode = 0;
+		String status = null;
+		Map<String, Object> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -488,21 +362,12 @@ public class ApiUtil {
 	 *         patient.
 	 */
 	public CustomResponse getPatientBillingContextByPatientId(String endpoint, Map<String, String> body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Only add the body if it's not null
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + endpoint).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		Map<String, Object> results = response.jsonPath().getMap("Results");
+		int statusCode = 0;
+		String status = null;
+		Map<String, Object> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -521,20 +386,12 @@ public class ApiUtil {
 	 *         PatientCode, ShortName, etc.
 	 */
 	public CustomResponse searchPatient(String endpoint, Object body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + endpoint).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		List<Map<String, Object>> results = response.jsonPath().getList("Results");
+		int statusCode = 0;
+		String status = null;
+		List<Map<String, Object>> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
@@ -553,49 +410,14 @@ public class ApiUtil {
 	 *         PatientId, NotesId, etc.
 	 */
 	public CustomResponse getPatientNotes(String endpoint, Object body) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		if (body != null) {
-			request.body(body);
-		}
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + endpoint).then().extract().response();
+		Response response = null;
 
 		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		List<Map<String, Object>> results = response.jsonPath().getList("Results");
+		int statusCode = 0;
+		String status = null;
+		List<Map<String, Object>> results = null;
 
 		// Return a CustomResponse object
 		return new CustomResponse(response, statusCode, status, results);
 	}
-
-	/**
-	 * @Test16 This method retrieves the data of admitted patients.
-	 * 
-	 * @param endpoint - The API endpoint to which the GET request is sent.
-	 * @description This method sends a GET request to fetch the list of admitted
-	 *              patients, including their admission details, patient
-	 *              information, and bed information.
-	 * @return CustomResponse - The API response contains the list of admitted
-	 *         patients in the 'Results' array.
-	 */
-	public CustomResponse getAdmittedPatientsData(String endpoint) {
-		RequestSpecification request = RestAssured.given().header("Authorization", AuthUtil.getAuthHeader())
-				.header("Content-Type", "application/json");
-
-		// Execute the GET request and extract the response
-		Response response = request.get(BASE_URL + endpoint).then().extract().response();
-
-		// Extract required data from the response
-		int statusCode = response.statusCode();
-		String status = response.jsonPath().getString("Status");
-		List<Map<String, Object>> results = response.jsonPath().getList("Results");
-
-		// Return a CustomResponse object
-		return new CustomResponse(response, statusCode, status, results);
-	}
-
 }
